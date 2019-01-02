@@ -10,28 +10,18 @@
 
 @implementation DVMCard
 
--(instancetype)initWithSuit:(NSString *)suit image:(NSString *)image
+// MARK: - Initialization\
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-    
     self = [super init];
     if (self) {
-        _suit = [suit copy];
-        _image = [image copy];
+        NSArray *cards = dictionary[@"cards"];
+        NSDictionary *cardDictionary = [cards firstObject];
+        NSString *image = cardDictionary[@"image"];
+        _image= image;
     }
     return self;
-}
-
-
-@end
-
-@implementation DVMCard (JSONConvertible)
-
--(instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)dictionary
-{
-    NSString *suit = dictionary[@"suit"];
-    NSString *image = dictionary[@"image"];
-    return  [self initWithSuit:suit image:image];
-    
 }
 
 @end

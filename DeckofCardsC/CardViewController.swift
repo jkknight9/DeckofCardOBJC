@@ -9,22 +9,29 @@
 import UIKit
 
 class CardViewController: UIViewController {
-
+    
+    //   MARK: - Outlets
+    
+    @IBOutlet weak var cardImageView: UIImageView!
+    @IBOutlet weak var suitLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //   MARK: - Actions
+    @IBAction func cardButtonTapped(_ sender: Any) {
+       UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DVMCardController.fetchCard { (card) in
+            guard let card = card else {return}
+            DVMCardController.fetchCardImage(with: card, completion: { (image) in
+                DispatchQueue.main.async {
+                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.cardImageView.image = image
+                }
+            })
+        }
     }
-    */
-
 }
