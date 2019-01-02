@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  DVMCardController.m
 //  DeckofCardsC
 //
 //  Created by Jack Knight on 12/31/18.
 //  Copyright © 2018 Jack Knight. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DVMCardController.h"
 
-@interface ViewController : UIViewController
-
+@implementation DVMCardController
 
 @end
-
